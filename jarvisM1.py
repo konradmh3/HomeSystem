@@ -62,9 +62,11 @@ def listen():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("listening...")
-        audio = r.listen(source)
+        audio = r.listen(source, phrase_time_limit=4) 
+    ###### just added the phrase_time_limit=4, ^, we MAY have to come back later and connect commands that are cut off by this ######
         try:
             text = r.recognize_google(audio).lower()
+            print(text)
             # if "jarvis" not in text: we want to return nothing if the wake word is not in the text
             if "jarvis" in text:
                 return text
