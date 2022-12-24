@@ -1,13 +1,5 @@
-#################################################################################################################
-# Because i really want to build on this program for a while...im going to take a break in adding more commands #
-# For now, i will improve the commands i have such as the spotify app, the inconsistant voices                  #
-# And lastly introduce jarvis to spotify with spotify api so that he can play music for me on voice command     #
-#################################################################################################################
-
-from __future__ import print_function
-
-
 # import the necessary libraries
+from __future__ import print_function
 import datetime
 import os.path
 import os
