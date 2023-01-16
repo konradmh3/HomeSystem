@@ -1,3 +1,6 @@
 /dist/*
 /build/*
 /.venv/*
+# if we want to ignore a specific file
+/secretVariables.py
+

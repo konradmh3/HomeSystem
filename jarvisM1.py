@@ -8,21 +8,20 @@ from playsound import playsound
 import random
 import requests
 # from time import sleep
+import secretVariables
 
-
-# Add LIFX Authorization
-token = "c07545722e208de4d94b41b0d7497aaebe7b0cfc73c32bf5d76241b54fd37b39"
-headers = {
-    "Authorization": "Bearer %s" %token ,
+# Set up header for LIFX Authorization
+header = {
+    "Authorization": "Bearer %s" %secretVariables.token ,
     }
 
 # Add Spotipy Authorization
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 # credentials
-client_id = "96ce87edae0949aaaeec8e5b82678a3d"
-client_secret = "0cf5e905b5024144a7e58c1062590571"
-redirect_uri = "http://localhost:8080" # this has to match uri in spotify developer dashboard
+client_id = secretVariables.client_id
+client_secret = secretVariables.client_secret
+redirect_uri = secretVariables.redirect_uri # this has to match uri in spotify developer dashboard
 scope = "user-modify-playback-state" # this scope allows us to play music and control playback
 # Use the SpotifyOAuth object to authenticate with the Spotify API and get a token that can adjust playback
 # token is cached in the .cache file
@@ -80,7 +79,7 @@ def perform_command(command, text):
         payload = {
             "power": "on",
             }
-        response = requests.put('https://api.lifx.com/v1/lights/all/state', data=payload, headers=headers)       
+        response = requests.put('https://api.lifx.com/v1/lights/all/state', data=payload, headers=header)       
         # print(response.text)
         # playsound(returnRandomSound("lightsOnSounds"))
     elif command == "lights off":
@@ -88,7 +87,7 @@ def perform_command(command, text):
         payload = {
             "power": "off",
             }
-        response = requests.put('https://api.lifx.com/v1/lights/all/state', data=payload, headers=headers)       
+        response = requests.put('https://api.lifx.com/v1/lights/all/state', data=payload, headers=header)       
         # print(response.text)
         # playsound(returnRandomSound("lightsOffSounds"))
     elif command == "play":
