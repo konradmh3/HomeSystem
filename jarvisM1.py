@@ -53,7 +53,7 @@ def listen():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("listening...")
-        audio = r.listen(source, phrase_time_limit=4) 
+        audio = r.listen(source, phrase_time_limit=6) 
     ###### just added the phrase_time_limit=4, ^, we MAY have to come back later and connect commands that are cut off by this ######
         try:
             text = r.recognize_google(audio).lower()
